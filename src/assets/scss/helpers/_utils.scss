@@ -1,0 +1,22 @@
+/* _utils.scss */
+
+.inline-text-gradient { // 인라인 텍스트에 그래디언트 컬러 적용
+    background: {
+        image: linear-gradient(var(--il-angle, 90deg), rgba(var(--il-grad-from-clr, var(--clr-text)), var(--il-grad-from-opaq, 1)), rgba(var(--il-grad-to-clr, var(--clr-theme)), var(--il-grad-to-opaq, 1)));
+        repeat: no-repeat;
+        position: center;
+        size: 100%;
+        clip: text;
+    }
+    color: transparent;
+}
+
+.a11y-label { // 버튼에 접근성 라벨 적용
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    opacity: 0;
+}
+
+/* _utils.scss */

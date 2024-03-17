@@ -1,0 +1,31 @@
+/* _commonLayouts.scss */
+
+.section-aligner {
+    margin-inline: auto;
+    width: min(60rem, 100% - 1rem);
+}
+
+.main-section-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+}
+
+.separator {
+    &-horizontal,
+    &-vertical {
+        background-color: hsl(var(--clr-secondary) / .15);
+    }
+
+    &-horizontal {
+        width: 100%;
+        height: 1px;
+    }
+
+    &-vertical {
+        width: 1px;
+        height: 100%;
+    }
+}
+
+/* _commonLayouts.scss */

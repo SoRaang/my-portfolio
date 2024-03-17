@@ -1,0 +1,202 @@
+/* _footPrimary.scss */
+
+#footPrimary {
+    margin-block-start: 5rem;
+    background-color: hsl(var(--clr-secondary) / .05);
+}
+
+#bizContact {
+    position: relative;
+    padding-block: 5rem;
+    background: {
+        image: url('/usrSrc/images/layouts/contact.jpg');
+        repeat: no-repeat;
+        position: center;
+        size: cover;
+    }
+    color: white;
+
+    &::before {
+        position: absolute;
+        inset: 0;
+        background-color: rgb(0 0 0 / .5);
+        content: '';
+    }
+}
+
+.biz-container {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    isolation: isolate;
+}
+
+@media screen and (max-width: 720px) {
+    .contact-please {
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+        gap: .5rem;
+    }
+}
+
+#btnContactForm {
+    padding: 1rem 1.5rem;
+    border-radius: .25rem;
+    background: {
+        image: linear-gradient(to top left, rgb(66 0 255), rgb(0 255 108) 50%, hsl(var(--clr-secondary)));
+        position: 0 0;
+        size: 400% 400%;
+    }
+    color: white;
+    font-weight: 600;
+    transition: background-position .15s, box-shadow .15s, scale .15s;
+    isolation: isolate;
+
+    &:hover {
+        background-position: 100% 100%;
+        box-shadow: 0 .25rem 1rem rgb(0 0 0 / .25);
+        scale: 1.1;
+    }
+}
+
+#footLogo {
+    width: 100%;
+    height: fit-content;
+    opacity: .5;
+
+    > a {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+
+    [data-foot-logo] {
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+#companyInfo {
+    padding-block: 2rem;
+}
+
+.company-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+}
+
+@media screen and (max-width: 720px) {
+    .company-container {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .company-container {
+        display: flex;
+        flex-flow: column nowrap;
+    }
+
+    #footLogo {
+        height: 2rem;
+    }
+}
+
+#footTexts {
+    grid-column: 2 / -1;
+}
+
+.footer-company-attributes {
+    display: flex;
+    flex-flow: row wrap;
+    gap: .5rem;
+
+    > dt {
+        flex: 0 auto;
+        font-weight: 600;
+    }
+
+    > dd {
+        opacity: .75;
+    }
+
+    & + & {
+        margin-block-start: 1rem;
+    }
+}
+
+.copyright-text {
+    margin-block-start: 2rem;
+    font-size: var(--fnt-sm);
+    opacity: .5;
+}
+
+#floatButtons {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: .5rem;
+    position: fixed;
+    inset-block-end: 1rem;
+    inset-inline-end: 1rem;
+    z-index: 50000;
+}
+
+.float-button {
+    display: grid;
+    place-items: center;
+    position: relative;
+    width: max(2rem, 2.25vmax);
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    background-color: hsl(var(--float-button-face, 0 100% 100%));
+    box-shadow: 0 .5rem 1.5rem hsl(var(--clr-secondary) / .25);
+    font-size: var(--fnt-title-xs);
+    transition: scale .15s;
+
+    &::before {
+        display: block;
+        position: absolute;
+        inset-block: auto;
+        inset-inline-end: calc(100% + .5rem);
+        padding: .25rem .5rem;
+        width: max-content;
+        border-radius: 10rem;
+        background-color: black;
+        color: white;
+        font-size: var(--fnt-sm);
+        font-weight: 600;
+        transition: background-color .15s;
+        content: attr(data-float-tooltip);
+    }
+
+    &:hover {
+        scale: 1.1;
+        outline: .1rem hsl(var(--clr-theme));
+        outline-offset: .25rem;
+
+        &::before {
+            background-color: hsl(var(--clr-secondary));
+        }
+    }
+}
+
+#btnGotoTop {
+    color: hsl(var(--clr-secondary));
+    z-index: 1;
+}
+
+#btnRemote {
+    --float-button-face: var(--clr-theme);
+
+    color: white;
+    animation: pulse-aura 1s ease-out infinite;
+}
+
+/* _footPrimary.scss */

@@ -1,0 +1,476 @@
+/* _formElements.scss */
+
+// [input type="text, number, url, email, tel"] 시작
+
+:root {
+    // Input Commons
+    --clr-input-focus: 0 102 255;
+    --clr-input-accept: 51 152 51;
+    --clr-input-warning: ;
+    --clr-input-error: 255, 78, 65;
+    --clr-input-disabled: 245, 245, 245;
+
+    --bdr-input: .5px solid rgba(var(--clr-input-border), .1);
+
+    // Input Borders
+    --clr-input-border: 0, 0, 0;
+
+    // Input Backgrounds
+    --clr-input-background: 255, 255, 255;
+
+    // Input Text Colors
+    --clr-input-text: 0, 0, 0;
+    --input-text-disabled: .05rem .05rem 0 rgb(255, 255, 255);
+}
+
+.labeled-input-binder {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: .25rem;
+}
+
+.form-input-label {
+    opacity: .5;
+}
+
+.form-input-text {
+    /*
+    <div class="form-input-text">
+        <leading element>
+        <input class="input-element">
+        <trailing element>
+    </div>
+    */
+
+    display: flex;
+    border-radius: var(--bdr-form-element);
+    background-color: hsl(var(--clr-min));
+    color: hsl(var(--clr-text-base));
+    font-size: var(--fnt-md);
+    overflow: hidden;
+
+    > .input-element {
+        flex: 1 1 auto;
+        padding: .3rem .5rem;
+        min-width: 0;
+        border-block: var(--bdr-interface-normal);
+        background-color: transparent;
+        outline: 0;
+    }
+
+    &:not(:has(.form-input-leading)) {
+        > .input-element {
+            border-inline-start: var(--bdr-interface-normal);
+            border: {
+                top-left-radius: inherit;
+                bottom-left-radius: inherit;
+            };
+        }
+    }
+
+    &:not(:has(.form-input-trailing)) {
+        > .input-element {
+            border-inline-end: var(--bdr-interface-normal);
+            border: {
+                top-right-radius: inherit;
+                bottom-right-radius: inherit;
+            };
+        }
+    }
+
+    &:has(.form-input-leading.icons) {
+        > .input-element {
+            padding-inline-start: 0;
+        }
+    }
+
+    &:has(.form-input-trailing.icons) {
+        > .input-element {
+            padding-inline-end: 0;
+        }
+    }
+
+    &:has(.input-element:focus) {
+        outline: .15rem solid hsl(var(--clr-optional) / .15);
+
+        > * {
+            border-color: hsl(var(--clr-optional) / .5);
+        }
+    }
+
+    &:has(.input-element:invalid) {
+        outline: .15rem solid hsl(var(--clr-alert) / .1);
+        color: hsl(var(--clr-alert));
+
+        > * {
+            border-color: hsl(var(--clr-alert) / .25);
+        }
+    }
+
+    &:has(.input-element:is([pattern], [type="url"], [type="email"]):valid) {
+        outline: .15rem solid hsl(var(--clr-accept) / .1);
+        color: hsl(var(--clr-accept));
+
+        > * {
+            border-color: hsl(var(--clr-accept) / .25);
+        }
+    }
+
+    &:has(.input-element:disabled) {
+        > * {
+            background-color: hsl(var(--clr-unabled));
+            color: hsl(var(--clr-text-disabled));
+            text-shadow: var(--shd-form-disabled);
+        }
+    }
+}
+
+.form-input-leading,
+.form-input-trailing {
+    display: grid;
+    place-items: center;
+    flex: 0 auto;
+    padding: .3rem .5rem;
+    border-block: var(--bdr-interface-normal);
+    outline: 0;
+
+    &.fixers { // 프리픽스, 서픽스
+        /*
+        <div class="form-input-<position> fixers">
+            <span> https:// </span>
+        </div>
+        */
+
+        border-inline: var(--bdr-interface-normal);
+        background-color: hsl(var(--clr-unabled));
+        color: hsl(var(--clr-text-disabled));
+        text-shadow: var(--shd-form-disabled);
+    }
+
+    &.icons { // 리딩 / 트레일링 아이콘
+        /*
+        <div class="form-input-<position> icons">
+            <i class="ri-lock-line"></i>
+        </div>
+        */
+
+        flex-basis: 1.7rem;
+        aspect-ratio: 1 / 1;
+
+        &:is(.form-input-leading) {
+            border-inline-start: var(--bdr-interface-normal);
+        }
+
+        &:is(.form-input-trailing) {
+            border-inline-end: var(--bdr-interface-normal);
+        }
+    }
+
+    &.shortcuts { // 트레일링 단축키
+        /*
+        <div class="form-input-trailing shortcuts">
+            <kbd> ctrl </kbd>
+            <span> + </span>
+            <kbd> s </kbd>
+        </div>
+        */
+
+        display: flex;
+        align-items: center;
+        gap: .25rem;
+        border-inline-end: var(--bdr-interface-normal);
+
+        > kbd {
+            padding: .2rem .5rem;
+            border: var(--bdr-interface-normal);
+            border-radius: .15rem;
+            background-color: hsl(0 0% 92%);
+            box-shadow: 0 .1rem 0 rgba(0, 0, 0, .1);
+            color: hsl(0 0% 47%);
+            font-size: .4rem;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+    }
+
+    &.button { // 트레일링 버튼
+        /*
+        <button type="button" class="form-input-trailing button">
+            <span> Submit </span>
+        </button>
+        */
+
+        border: var(--bdr-interface-normal);
+        background-color: hsl(var(--clr-optional) / .5);
+        color: hsl(var(--clr-min));
+
+        &:hover {
+            background-color: hsl(var(--clr-optional));
+        }
+
+        &:disabled {
+            background-color: hsl(var(--clr-unabled));
+            color: hsl(var(--clr-text-disabled));
+            text-shadow: var(--shd-form-disabled);
+        }
+    }
+
+    &.select { // 리딩 / 트레일링 셀렉트
+        /*
+        <select class="form-input-<position> select">
+            <option value=""> Option 1 </option>
+        <select>
+        */
+
+        padding-inline-end: 1.5rem;
+        background: {
+            color: transparent;
+            image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"%3E%3Cpath d="M18 9 12 3 6 9H18ZM18 15 12 21 6 15H18Z"%3E%3C/path%3E%3C/svg%3E');
+            repeat: no-repeat;
+            position: center right .3rem;
+            size: 1em 1em;
+        }
+        outline: 0;
+        -webkit-appearance: none;
+           -moz-appearance: none;
+                appearance: none;
+
+        &:disabled {
+            background: {
+                color: hsl(var(--clr-text-disabled));
+                image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"%3E%3Cpath d="M19 10H20C20.5523 10 21 10.4477 21 11V21C21 21.5523 20.5523 22 20 22H4C3.44772 22 3 21.5523 3 21V11C3 10.4477 3.44772 10 4 10H5V9C5 5.13401 8.13401 2 12 2C15.866 2 19 5.13401 19 9V10ZM17 10V9C17 6.23858 14.7614 4 12 4C9.23858 4 7 6.23858 7 9V10H17ZM11 14V18H13V14H11Z"%3E%3C/path%3E%3C/svg%3E');
+            }
+            color: rgb(204, 204, 204);
+            text-shadow: var(--shd-form-disabled);
+        }
+
+        &:is(.form-input-leading) {
+            border-inline-start: var(--bdr-interface-normal);
+
+            &:disabled {
+                border-inline-end: var(--bdr-interface-normal);
+            }
+        }
+
+        &:is(.form-input-trailing) {
+            border-inline-end: var(--bdr-interface-normal);
+
+            &:disabled {
+                border-inline-start: var(--bdr-interface-normal);
+            }
+        }
+    }
+}
+
+.form-input-leading {
+    border: {
+        top-left-radius: inherit;
+        bottom-left-radius: inherit;
+    };
+}
+
+.form-input-trailing {
+    border: {
+        top-right-radius: inherit;
+        bottom-right-radius: inherit;
+    };
+}
+
+// [input type="text, number, url, email, tel"] 끝
+
+// [input type="checkbox, radio"] 시작
+
+.form-input-checker {
+    /*
+    <div class="form-input-checkers">
+        <input [type] [id] class="checker-element">
+        <label for="[id]" Checker Label </label>
+    </div>
+    */
+
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    height: 1.6rem;
+
+    > .checker-element {
+        position: absolute;
+        width: 0;
+        height: 0;
+        opacity: 0;
+
+        & + label {
+            display: block;
+            width: 100%;
+            cursor: pointer;
+        }
+    }
+
+    &::before {
+        flex: 0 0 1rem;
+        display: block;
+        width: 1rem;
+        height: 1rem;
+        border: var(--bdr-interface-normal);
+        background-color: hsl(var(--clr-min));
+        cursor: pointer;
+        content: '';
+    }
+
+    &:has([type="checkbox"]) {
+        &::before {
+            border-radius: var(--bdr-form-element);
+        }
+    }
+
+    &:has([type="radio"]) {
+        &::before {
+            border-radius: var(--bdr-form-full);
+        }
+    }
+
+    &:hover {
+        &::before {
+            background-color: hsl(var(--clr-optional) / .05);
+        }
+    }
+
+    &:has(.checker-element:active, .checker-element:focus) {
+        outline: .1rem dashed hsl(var(--clr-optional) / .15);
+        outline-offset: .25rem;
+
+        &::before {
+            border-color: hsl(var(--clr-optional) / .5);
+            outline: .15rem solid hsl(var(--clr-optional) / .15);
+        }
+    }
+
+    &:has(.checker-element:checked) {
+        &::before {
+            border-color: hsl(var(--clr-accept) / .5);
+            background: {
+                image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"%3E%3Cpath stroke="hsl(143 69% 60%)" stroke-width="3px" fill="hsl(143 69% 60%)" d="M10.0007 15.1709L19.1931 5.97852L20.6073 7.39273L10.0007 17.9993L3.63672 11.6354L5.05093 10.2212L10.0007 15.1709Z"%3E%3C/path%3E%3C/svg%3E');
+                repeat: no-repeat;
+                position: center;
+                size: .8rem .8rem;
+            }
+        }
+
+        &:has(.checker-element:hover) {
+            &::before {
+                background-color: hsl(var(--clr-accept) / .15);
+            }
+        }
+
+        label {
+            font-weight: 700;
+        }
+    }
+
+    &:has(:disabled) {
+        &::before {
+            border-color: hsl(var(--clr-max) / .15);
+            background-color: hsl(var(--clr-max) / .15);
+            cursor: no-drop;
+        }
+
+        label {
+            text-shadow: 1px 1px hsl(var(--clr-min));
+            opacity: .5;
+            cursor: no-drop;
+            pointer-events: none;
+        }
+    }
+}
+
+// [input type="checkbox, radio"] 끝
+
+// [select] 시작
+
+.form-input-select {
+    /*
+    <div class="form-input-select">
+        <select class="select-element">
+            <option> Option 1 </option>
+        </select>
+
+        <div class="select-arrow-icon">
+            <i class="ri-arrow-down-s-line"></i>
+        </div>
+    </div>
+    */
+
+    position: relative;
+    border-radius: var(--bdr-form-element);
+    background-color: hsl(var(--clr-min));
+    color: hsl(var(--clr-text-base));
+    font-size: var(--fnt-md);
+    overflow: hidden;
+
+    > * {
+        cursor: pointer;
+    }
+
+    > .select-element {
+        padding: .4rem .5rem;
+        min-width: 0;
+        width: 100%;
+        border: var(--bdr-interface-normal);
+        border-radius: inherit;
+        background-color: transparent;
+        outline: 0;
+        appearance: none;
+    }
+
+    > .select-arrow-icon {
+        display: grid;
+        place-items: center;
+        position: absolute;
+        inset: 0;
+        margin-inline-start: auto;
+        height: 100%;
+        aspect-ratio: 1 / 1;
+        border-inline-start: var(--bdr-interface-normal);
+        pointer-events: none;
+    }
+
+    &:has(.select-element:hover) {
+        > .select-arrow-icon {
+            background-color: hsl(var(--clr-optional) / .05);
+        }
+    }
+
+    &:has(.select-element:active, .select-element:focus) {
+        outline: .15rem solid hsl(var(--clr-optional) / .15);
+
+        > * {
+            border-color: hsl(var(--clr-optional) / .5);
+        }
+
+        > .select-arrow-icon {
+            background-color: hsl(var(--clr-optional) / .5);
+            color: hsl(var(--clr-min));
+
+            > i {
+                rotate: 180deg;
+            }
+        }
+    }
+
+    &:has(.select-element:disabled) {
+        pointer-events: none;
+
+        > * {
+            color: rgb(204, 204, 204);
+            text-shadow: var(--shd-form-disabled);
+        }
+
+        > .select-element {
+            background-color: hsl(var(--clr-unabled));
+        }
+    }
+}
+
+// [select] 끝
+
+/* _formElements.scss */

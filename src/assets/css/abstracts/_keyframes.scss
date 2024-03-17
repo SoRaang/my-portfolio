@@ -1,0 +1,19 @@
+/* _keyframes.scss */
+
+@keyframes pulse-aura {
+    from {
+        outline: 0 solid transparent;
+        outline-offset: 0;
+    }
+
+    30% {
+        outline-color: hsl(var(--clr-primary) / .3);
+    }
+
+    to {
+        outline: 2rem solid hsl(var(--clr-temp-aquamarine) / .001);
+        outline-offset: 1rem;
+    }
+}
+
+/* _keyframes.scss */

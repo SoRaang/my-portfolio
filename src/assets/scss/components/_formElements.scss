@@ -1,0 +1,241 @@
+/* _formElements.scss */
+
+// [input type="text, number, url, email, tel"] 시작
+
+:root {
+    // Input Commons
+    --clr-input-focus: 0, 102, 255;
+    --clr-input-accept: 51, 152, 51;
+    --clr-input-warning: ;
+    --clr-input-error: 255, 78, 65;
+    --clr-input-disabled: 245, 245, 245;
+
+    --bdr-input: .5px solid rgba(var(--clr-input-border), .1);
+
+    // Input Borders
+    --clr-input-border: 0, 0, 0;
+
+    // Input Backgrounds
+    --clr-input-background: 255, 255, 255;
+
+    // Input Text Colors
+    --clr-input-text: 0, 0, 0;
+    --input-text-disabled: .05rem .05rem 0 rgb(255, 255, 255);
+}
+
+.form-input-text {
+    display: flex;
+    // align-items: center;
+    border-radius: .15rem;
+    background-color: rgb(var(--clr-input-background));
+    color: rgb(var(--clr-input-text));
+    font-size: var(--fnt-md);
+    overflow: hidden;
+
+    > .input-element {
+        flex: 1 1 auto;
+        padding: .5rem;
+        min-width: 0;
+        border-block: var(--bdr-input);
+        background-color: transparent;
+        outline: 0;
+    }
+
+    &:not(:has(.form-input-leading)) {
+        > .input-element {
+            border-inline-start: var(--bdr-input);
+        }
+    }
+
+    &:not(:has(.form-input-trailing)) {
+        > .input-element {
+            border-inline-end: var(--bdr-input);
+        }
+    }
+
+    &:has(.form-input-leading.icons) {
+        > .input-element {
+            padding-inline-start: 0;
+        }
+    }
+
+    &:has(.form-input-trailing.icons) {
+        > .input-element {
+            padding-inline-end: 0;
+        }
+    }
+
+    &:has(.input-element:focus) {
+        outline: .15rem solid rgba(var(--clr-input-focus), .05);
+
+        > * {
+            border-color: rgba(var(--clr-input-focus), .15);
+        }
+    }
+
+    &:has(.input-element:invalid) {
+        outline: .15rem solid rgba(var(--clr-input-error), .1);
+        color: rgb(var(--clr-input-error));
+
+        > * {
+            border-color: rgba(var(--clr-input-error), .25);
+        }
+    }
+
+    &:has(.input-element:is([pattern], [type="url"], [type="email"]):valid) {
+        outline: .15rem solid rgba(var(--clr-input-accept), .1);
+        color: rgb(var(--clr-input-accept));
+
+        > * {
+            border-color: rgba(var(--clr-input-accept), .25);
+        }
+    }
+
+    &:has(.input-element:disabled) {
+        background-color: rgb(var(--clr-input-disabled));
+        color: rgb(204, 204, 204);
+        text-shadow: var(--input-text-disabled);
+    }
+}
+
+.form-input-leading,
+.form-input-trailing {
+    display: grid;
+    place-items: center;
+    flex: 0;
+    padding: .5rem;
+    border-block: var(--bdr-input);
+    outline: 0;
+
+    &.fixers { // 프리픽스, 서픽스
+        /*
+        <div class="form-input-<position> fixers">
+            <span> https:// </span>
+        </div>
+        */
+
+        border-inline: var(--bdr-input);
+        background-color: rgb(var(--clr-input-disabled));
+        color: rgb(204, 204, 204);
+        text-shadow: var(--input-text-disabled);
+    }
+
+    &.icons { // 리딩 / 트레일링 아이콘
+        /*
+        <div class="form-input-<position> icons">
+            <i class="ri-lock-line"></i>
+        </div>
+        */
+
+        flex-basis: 1.7rem;
+        aspect-ratio: 1 / 1;
+
+        &:is(.form-input-leading) {
+            border-inline-start: var(--bdr-input);
+        }
+
+        &:is(.form-input-trailing) {
+            border-inline-end: var(--bdr-input);
+        }
+    }
+
+    &.shortcuts { // 트레일링 단축키
+        /*
+        <div class="form-input-trailing shortcuts">
+            <kbd> ctrl </kbd>
+            <span> + </span>
+            <kbd> s </kbd>
+        </div>
+        */
+
+        display: flex;
+        align-items: center;
+        gap: .25rem;
+        border-inline-end: var(--bdr-input);
+
+        > kbd {
+            padding: .2rem .5rem;
+            border: var(--bdr-input);
+            border-radius: .15rem;
+            background-color: rgb(235, 235, 235);
+            box-shadow: 0 .1rem 0 rgba(0, 0, 0, .1);
+            color: rgb(119, 119, 119);
+            font-size: .4rem;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+    }
+
+    &.button { // 트레일링 버튼
+        /*
+        <button type="button" class="form-input-trailing button">
+            <span> Submit </span>
+        </button>
+        */
+
+        padding-inline: 1rem;
+        border: var(--bdr-input);
+        background-color: rgba(var(--clr-theme), .5);
+        color: rgb(var(--clr-text-on-tint));
+
+        &:hover {
+            background-color: rgb(var(--clr-theme));
+        }
+
+        &:disabled {
+            background-color: rgb(var(--clr-input-disabled));
+            color: rgb(204, 204, 204);
+            text-shadow: var(--input-text-disabled);
+        }
+    }
+
+    &.select { // 리딩 / 트레일링 셀렉트
+        /*
+        <select class="form-input-<position> select">
+            <option value=""> Option 1 </option>
+        <select>
+        */
+
+        padding-inline-end: 1.5rem;
+        background: {
+            color: transparent;
+            image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"%3E%3Cpath d="M18 9 12 3 6 9H18ZM18 15 12 21 6 15H18Z"%3E%3C/path%3E%3C/svg%3E');
+            repeat: no-repeat;
+            position: center right .3rem;
+            size: 1em 1em;
+        }
+        outline: 0;
+        -webkit-appearance: none;
+           -moz-appearance: none;
+                appearance: none;
+
+        &:disabled {
+            background: {
+                color: rgb(var(--clr-input-disabled));
+                image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"%3E%3Cpath d="M19 10H20C20.5523 10 21 10.4477 21 11V21C21 21.5523 20.5523 22 20 22H4C3.44772 22 3 21.5523 3 21V11C3 10.4477 3.44772 10 4 10H5V9C5 5.13401 8.13401 2 12 2C15.866 2 19 5.13401 19 9V10ZM17 10V9C17 6.23858 14.7614 4 12 4C9.23858 4 7 6.23858 7 9V10H17ZM11 14V18H13V14H11Z"%3E%3C/path%3E%3C/svg%3E');
+            }
+            color: rgb(204, 204, 204);
+            text-shadow: var(--input-text-disabled);
+        }
+
+        &:is(.form-input-leading) {
+            border-inline-start: var(--bdr-input);
+
+            &:disabled {
+                border-inline-end: var(--bdr-input);
+            }
+        }
+
+        &:is(.form-input-trailing) {
+            border-inline-end: var(--bdr-input);
+
+            &:disabled {
+                border-inline-start: var(--bdr-input);
+            }
+        }
+    }
+}
+
+// [input type="text, number, url, email, tel"] 끝
+
+/* _formElements.scss */

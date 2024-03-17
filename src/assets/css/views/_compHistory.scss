@@ -1,0 +1,65 @@
+/* _compHistory.scss */
+
+#compHistory {
+
+}
+
+.history-container {
+    gap: 0;
+}
+
+.history-block {
+    --gradient-color: var(--clr-secondary);
+
+    display: grid;
+    grid-column: 1 / -1;
+    grid-template-columns: subgrid;
+    border-block: var(--bdr-interface-normal);
+
+    & + & {
+        border-block-start: 0;
+    }
+}
+
+.history-block-header {
+    padding: 1rem;
+    border-inline-end: var(--bdr-interface-normal);
+    background-image: linear-gradient(-135deg, hsl(var(--gradient-color) / .1), transparent 5rem);
+    font-size: var(--fnt-lg);
+    text-align: end;
+    font-weight: 900;
+}
+
+.history-block-body {
+    grid-column: 2 / -1;
+    background-color: white;
+}
+
+.history-item {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 1rem;
+    padding: 1rem;
+    cursor: grab;
+
+    & + & {
+        border-block-start: var(--bdr-interface-normal);
+    }
+
+    &-summary {
+        font-size: var(--fnt-md);
+    }
+
+    &-specifics {
+        padding: .75rem;
+        border-radius: var(--bdr-form-element-lg);
+        background-color: hsl(var(--clr-tertiary) / .5);
+    }
+
+    &:hover {
+        background-color: hsl(var(--clr-temp-aquamarine) / .05);
+        color: hsl(var(--clr-temp-steelblue));
+    }
+}
+
+/* _compHistory.scss */

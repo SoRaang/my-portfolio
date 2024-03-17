@@ -1,0 +1,286 @@
+/* _setup.scss */
+
+:root {
+    // 타이포
+
+    --fnt-title-xl: 2.4rem;
+    --fnt-title-lg: 1.8rem;
+    --fnt-title-md: 1.5rem;
+    --fnt-title-sm: 1.2rem;
+    --fnt-title-xs: 1rem;
+
+    --fnt-xl: .9rem;
+    --fnt-lg: .8rem;
+    --fnt-md: .7rem;
+    --fnt-sm: .6rem;
+    --fnt-xs: .5rem;
+
+    --ff-gothic: 'NS-Neo', sans-serif;
+    --ff-sans: 'SUIT', sans-serif;
+    --ff-serif-kr: '';
+    --ff-serif-en: '';
+
+    // 인터페이스
+
+    --bdr-form-outer: .9rem;
+    --bdr-form-inner: .65rem;
+    --bdr-form-element-lg: .75rem;
+    --bdr-form-element: .15rem;
+    --bdr-form-full: 25rem;
+
+    --bdr-interface-normal: 1px solid hsl(var(--clr-secondary) / .15);
+    --bdr-interface-fade: 1px solid hsl(var(--clr-secondary) / .05);
+
+    --shd-form-element: 0 .15rem .5rem -.1rem hsl(var(--clr-secondary) / .15);
+    --shd-form-outer: 0 .75rem 1.5rem hsl(var(--clr-secondary) / .15);
+    --shd-form-disabled: .05rem .05rem 0 hsl(var(--clr-min));
+
+    // 색상
+
+    --clr-min: 0 100% 100%; // 최소 대비 (컬러 스키마에 대해)
+    --clr-max: 0 0% 0%; // 최대 대비 (컬러 스키마에 대해)
+
+    --clr-theme: 227 100% 57%;
+    --clr-background: 210 40% 96%; // 배경
+
+    --clr-primary: 225 94% 67%; // 메인 컬러
+    --clr-secondary: 230 53% 37%;
+    --clr-tertiary: 214 95% 93%;
+    --clr-optional: 220 98% 51%;
+
+    --clr-text-base: 0 0% 12%; // 문자 기초
+    --clr-text-tint: var(--clr-min); // 하이라이트 배경 문자
+    --clr-text-invert: ; // 반전 배경 문자
+    --clr-text-disabled: 0 0% 80% ; // 비활성 문자
+
+    --clr-alert: 4 92% 46%; // 에러
+    --clr-warn: 40 93% 57%; // 경고
+    --clr-info: 138 54% 78%; // 정보
+    --clr-accept: 143 69% 60%; // 안전
+    --clr-unabled: 0 0% 96%; // 비활성
+
+    --clr-if-100: 0 100% 100%; // 인터페이스 표면 100%
+    --clr-if-75: ; // 인터페이스 표면 75%
+    --clr-if-50: ; // 인터페이스 표면 50%
+    --clr-if-25: ; // 인터페이스 표면 25%
+    --clr-if-10: ; // 인터페이스 표면 10%
+    --clr-if-5: ; // 인터페이스 표면 5%
+    --clr-if-disabled: ; // 비활성 인터페이스
+
+    --clr-temp-ebony: #4a5043;
+    --clr-temp-sunglow: #ffcb47;
+    --clr-temp-federalblue: #07004d;
+    --clr-temp-steelblue: 203 61% 45%;
+    --clr-temp-aquamarine: 164 73% 57%;
+    --clr-temp-dutchwhite: #f3dfbf;
+    --clr-temp-lightcoral: #eb8a90;
+    --clr-temp-engineeringorange: #ba2d0b;
+    --clr-temp-honeydew: 149 53% 89%;
+    --clr-temp-cambridgeblue: #73ba9b;
+    --clr-temp-britishracinggreen: #003e1f;
+    --clr-temp-night: #01110a;
+    --clr-temp-brightpinkcrayola: #ef798a;
+    --clr-temp-melon: #f7a9a8;
+    --clr-temp-finn: #613f75;
+    --clr-temp-fairytale: #e5c3d1;
+    --clr-temp-richblack: #011627;
+    --clr-temp-babypowder: #fdfffc;
+    --clr-temp-lightseagreen: #2ec4b6;
+    --clr-temp-pantonered: #e71d36;
+    --clr-temp-orangepeel: #ff9f1c;
+    --clr-temp-bluecrayola: #0075f2;
+    --clr-temp-oucrimson: #880d1e;
+    --clr-temp-rustyred: #dd2d4a;
+    --clr-temp-antiflashwhite: #efeff0;
+    --clr-temp-navajowhite: #ffe0b5;
+    --clr-temp-rawumber: #8a6552;
+    --clr-temp-caputmortuum: #462521;
+    --clr-temp-mediumslateblue: #6874e8;
+    --clt-temp-aliceblue: #e8f0ff;
+}
+
+body {
+    min-height: 100vh;
+    background-color: hsl(var(--clr-background));
+    font-family: 'SUIT', sans-serif;
+    color: hsl(var(--clr-secondary));
+    font-size: var(--fnt-md);
+    word-break: keep-all;
+    text-rendering: optimizeSpeed;
+
+    &.prevent-scroll {
+        overflow: hidden;
+    }
+}
+
+::-webkit-scrollbar {
+
+}
+
+::-webkit-scrollbar-track {
+
+}
+
+::-webkit-scrollbar-thumb {
+
+}
+
+h2 {
+    font-size: var(--fnt-title-lg);
+}
+
+h3 {
+    font-size: var(--fnt-title-md);
+}
+
+h4 {
+    font-size: var(--fnt-title-sm);
+}
+
+img,
+picture,
+i,
+svg,
+video {
+    display: block;
+    object-fit: cover;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+header,
+footer,
+hgroup,
+main,
+nav,
+section,
+summary {
+    display: block;
+}
+
+table {
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+img,
+picture {
+    display: block;
+    max-width: 100%;
+    border: none;
+    object-fit: cover;
+    -webkit-user-drag: none;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+
+    &:not([class]) {
+        text-decoration-skip-ink: auto;
+    }
+}
+
+form,
+fieldset {
+    border: none;
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+}
+
+button,
+input,
+textarea,
+select,
+optgroup {
+    border: none;
+    background: none;
+    font: inherit;
+    vertical-align: middle;
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+
+    &::-ms-expand {
+        display: none;
+    }
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+        margin: 0;
+        -webkit-appearance: none;
+           -moz-appearance: none;
+                appearance: none;
+    }
+
+    &::-webkit-calendar-picker-indicator {
+        display: none;
+        background: none;
+    }
+}
+
+button {
+    cursor: pointer;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+input[type="color"] {
+
+}
+
+hr {
+    clear: both;
+    border: none;
+    background-color: currentColor;
+}
+
+dialog {
+    border: none;
+    outline: none;
+}
+
+address {
+    font-style: normal;
+}
+
+kbd {
+    font-size: smaller;
+}
+
+code {
+    font-size: smaller;
+}
+
+mark {
+
+}
+
+ruby {
+    > rp {
+
+    }
+
+    > rt {
+
+    }
+}
+
+#wrap {
+    position: relative;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+/* _setup.scss */

@@ -1,0 +1,71 @@
+/* _subHero.scss */
+
+#subHero {
+    display: flex;
+    flex-flow: column nowrap;
+    position: relative;
+    height: 16rem;
+    overflow: hidden;
+}
+
+.sub-hero-transformer {
+    position: absolute;
+    inset: -1rem;
+    z-index: -1;
+    user-select: none;
+
+    &::after {
+        position: absolute;
+        inset: 0;
+        box-shadow: inset 0 0 5rem black;
+        isolation: isolate;
+        content: '';
+    }
+}
+
+#subHeroImage {
+    width: 100%;
+    height: 100%;
+    filter: brightness(.75) saturate(.9);
+    pointer-events: none;
+}
+
+#subBreadCrumbs {
+    margin-block-start: auto;
+}
+
+#menuBread {
+    display: flex;
+    align-items: center;
+}
+
+.bread-crumb {
+    padding: 1rem;
+    backdrop-filter: blur(1rem);
+
+    &.root {
+        background-color: hsl(var(--clr-background));
+        cursor: pointer
+    }
+
+    &:not(.root) {
+        color: white;
+        font-weight: 600;
+        text-shadow: .05rem .05rem 0 hsl(var(--clr-secondary) / .75);
+    }
+
+    &.depth-1 {
+        background-color: hsl(var(--clr-tertiary) / .5);
+    }
+
+    &.depth-2 {
+        background-color: hsl(var(--clr-tertiary) / .25);
+    }
+}
+
+#subPageName {
+    margin-block: 2.5rem;
+    font-family: 'NotoSerifKR', serif;
+}
+
+/* _subHero.scss */

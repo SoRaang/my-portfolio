@@ -1,0 +1,269 @@
+/* _headPrimary.scss */
+
+#headPrimary {
+    position: fixed;
+    inset-block-start: 0;
+    inset-inline: 0;
+    height: 3.5rem;
+    background-color: rgb(255 255 255 / .2);
+    backdrop-filter: blur(.25rem);
+    isolation: isolate;
+    z-index: 50000;
+
+    &::before {
+        display: block;
+        position: absolute;
+        inset-inline: 0;
+        height: 14rem; // 서브 메뉴가 4개 이상으로 늘어나면 이 수치도 늘어나야 함
+        background-color: rgb(255 255 255 / .75);
+        translate: 0 -100%;
+        z-index: -1;
+        content: '';
+    }
+
+    &:has(#primeNavList:not(.hide)) {
+        &:hover {
+            backdrop-filter: none;
+            outline: var(--bdr-interface-normal);
+
+            &::before {
+                backdrop-filter: blur(.25rem);
+                box-shadow: 0 .5rem 2rem 1rem hsl(var(--clr-secondary) / .1);
+                translate: 0 0;
+                transition: translate .25s;
+            }
+        }
+    }
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+#mainLogo {
+    height: 2rem;
+    font-size: 0;
+
+    > a {
+        display: block;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+
+    [data-main-logo] {
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+#navPrimary {
+    display: flex;
+    align-items: center;
+}
+
+#primeNavList {
+    display: flex;
+
+    &.hide {
+        display: none;
+    }
+}
+
+.nav-item {
+    &.prime {
+        position: relative;
+        width: 6rem;
+        height: 3.5rem;
+
+        &::before {
+            display: block;
+            position: absolute;
+            inset-block-end: 0;
+            inset-inline: 0;
+            height: .2rem;
+            background-color: hsl(var(--clr-theme));
+            scale: 0 1;
+            transition: scale .25s;
+            content: '';
+        }
+
+        &:hover {
+            &::before {
+                scale: 1;
+            }
+        }
+
+        &:has(+ :hover) { // :hover의 앞에 있는 요소
+            &::before {
+                translate: 50% 0;
+            }
+        }
+
+        &:hover + & { // :hover의 뒤에 있는 요소
+            &::before {
+                translate: -50% 0;
+            }
+        }
+    }
+
+    &.mobile {
+        display: flex;
+        gap: .5rem;
+        margin-block: 2rem;
+    }
+
+    &.second {
+        border-radius: .25rem;
+
+        &:hover {
+            background-color: hsl(var(--clr-secondary));
+            color: white;
+        }
+    }
+}
+
+.nav-link-method {
+    &.first {
+        font-family: var(--ff-gothic);
+        font-size: var(--fnt-lg);
+        font-weight: 900;
+    }
+
+    &.second {
+        padding: .75rem .5rem;
+
+        &:hover {
+            font-weight: 600;
+        }
+    }
+
+    :where(.prime) & {
+        display: grid;
+        place-items: center;
+        width: 100%;
+        height: 100%;
+    }
+
+    :where(.mobile) & {
+        &.first {
+            font-size: max(var(--fnt-title-sm), 3vmin);
+            opacity: .5;
+        }
+
+        &.second {
+            font-size: max(var(--fnt-xl), 2.5vmin);
+            text-decoration: underline 1px;
+            text-underline-offset: .4rem;
+        }
+    }
+}
+
+.nested-nav-list {
+    :where(.prime) & {
+        display: none;
+        position: absolute;
+        inset-block-start: 100%;
+        inset-inline: 0;
+        padding-block: .5rem;
+    }
+
+    :where(#headPrimary:hover) & {
+        display: block;
+    }
+
+    :where(.mobile) & {
+        display: flex;
+        flex-flow: column nowrap;
+        gap: 1rem;
+    }
+}
+
+#mobileBurger {
+    display: none;
+
+    &.show {
+        display: block;
+    }
+}
+
+#btnBurger {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: .2rem;
+    width: 2rem;
+    height: 2rem;
+    border-radius: .25rem;
+
+    > span {
+        display: block;
+        width: 1.2rem;
+        height: .1rem;
+        background-color: hsl(var(--clr-secondary));
+    }
+}
+
+#navMobile {
+    display: none;
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: hsl(var(--clr-secondary) / .9);
+    color: white;
+    z-index: 50000;
+
+    &.show {
+        display: initial;
+    }
+}
+
+.mobile-nav-control {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 3.5rem;
+}
+
+#btnMobileClose {
+    position: relative;
+    width: 2rem;
+    height: 2rem;
+}
+
+.close-line {
+    &-tl,
+    &-br {
+        display: block;
+        position: absolute;
+        inset: 0;
+        margin: auto;
+        width: 80%;
+        height: .2rem;
+        background-color: white;
+    }
+
+    &-tl {
+        rotate: -45deg 0;
+    }
+
+    &-br {
+        rotate: 45deg 0;
+    }
+}
+
+.mobile-nav-container {
+    display: flex;
+    justify-content: center;
+}
+
+#mobileNavList {
+
+}
+
+/* _headPrimary.scss */

@@ -1,0 +1,77 @@
+/* _default.scss */
+
+@font-face {
+    font-family: 'SUIT';
+    src:
+        local('SUIT Variable'),
+        url('/usrSrc/fonts/SUIT-Variable.woff2') format('woff2-variations');
+	font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'NS-Neo';
+    src:
+        local('NanumSquareNeo Variable'),
+        url('/usrSrc/fonts/NanumSquareNeo-Variable.woff2') format('woff2-variations');
+	font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    src:
+        local('PretendardVariable'),
+        url('/usrSrc/fonts/PretendardVariable.woff2') format('woff2-variations');
+	font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'NotoSerifKR';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NotoSerifKR.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+:root {
+    box-sizing: border-box;
+    font-family: 'NS-Neo', 'SUIT', sans-serif;
+    font-size: 20px;
+    line-height: 1;
+    scroll-behavior: smooth;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+    min-width: 0;
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+       -moz-tap-highlight-color: transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html:focus-within {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* _default.scss */

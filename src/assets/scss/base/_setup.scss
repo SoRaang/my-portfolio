@@ -1,0 +1,131 @@
+/* _setup.scss */
+
+:root {
+    --opaq: 1; // 투명도 픽서
+
+    --fnt-title-xl: 2.4rem;
+    --fnt-title-lg: 1.8rem;
+    --fnt-title-md: 1.5rem;
+    --fnt-title-sm: 1rem;
+
+    --fnt-xl: .9rem;
+    --fnt-lg: .8rem;
+    --fnt-md: .7rem;
+    --fnt-sm: .6rem;
+    --fnt-xs: .5rem;
+
+    --ff-gothic: 'NS-Neo', sans-serif;
+    --ff-sans: 'SUIT', sans-serif;
+    --ff-serif-kr: '';
+    --ff-serif-en: 'Suez One', serif;
+
+    --clr-white: 255, 255, 255;
+    --clr-black: 0, 0, 0;
+    --clr-midgray: 128, 128, 128;
+}
+
+body {
+    min-height: 100vh;
+    background-color: rgb(var(--clr-background));
+    font-family: var(--ff-sans);
+    color: rgba(var(--clr-text), var(--opaq));
+    font-size: var(--fnt-md);
+    word-break: keep-all;
+
+    &.prevent-scroll {
+        overflow: hidden;
+    }
+
+    overflow: overlay;
+}
+
+::selection {
+    background-color: rgba(var(--clr-theme), .9);
+    color: rgb(var(--clr-text-on-tint));
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+    border-radius: 2px;
+}
+
+::-webkit-scrollbar-track-piece {
+    border-radius: 2px;
+    background-color: rgba(var(--clr-min), .3);
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 2px;
+    background-color: rgba(var(--clr-max), .25);
+}
+
+hr {
+    border: 0;
+
+    &.vf {
+        width: .5px;
+        height: 100%;
+    }
+
+    &.hf {
+        width: 100%;
+        height: .5px;
+    }
+}
+
+h2 {
+    font-size: var(--fnt-title-lg);
+}
+
+h3 {
+    font-size: var(--fnt-title-md);
+}
+
+h4 {
+    font-size: var(--fnt-title-sm);
+}
+
+img,
+picture,
+i,
+svg,
+video {
+    display: block;
+    object-fit: cover;
+}
+
+#wrap {
+    position: relative;
+    overflow-x: hidden;
+}
+
+#contentView {
+    min-height: 100vh;
+}
+
+.reactive-inner {
+    margin-inline: auto;
+    width: max(300px, calc(100% - 5rem));
+    transition: width .15s;
+}
+
+.minimum-container {
+    margin-inline: auto;
+    width: min(1160px, 100% - 1.5rem);
+    transition: width .15s;
+}
+
+@media screen and (max-width: 1000px) {
+    .reactive-inner {
+        width: calc(100% - 1.5rem);
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .minimum-container {
+        width: 100%;
+    }
+}
+
+/* _setup.scss */

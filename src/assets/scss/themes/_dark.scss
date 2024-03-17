@@ -1,0 +1,78 @@
+/* _dark.scss */
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --clr-min: 0, 0, 0; // 최소 대비 (컬러 스키마에 대해)
+        --clr-max: 255, 255, 255; // 최대 대비 (컬러 스키마에 대해)
+
+        --clr-theme: 0, 255, 136; // 메인 컬러
+        --clr-background: 56, 56, 67; // 배경
+
+        --clr-surface-100: ; // 표면 100%
+        --clr-surface-75: ; // 표면 75%
+        --clr-surface-50: ; // 표면 50%
+        --clr-surface-25: ; // 표면 25%
+        --clr-surface-10: ; // 표면 10%
+        --clr-surface-5: ; // 표면 5%
+
+        --clr-tint-100: 255, 0, 0; // 하이라이트 100%
+        --clr-tint-75: ; // 하이라이트 75%
+        --clr-tint-50: ; // 하이라이트 50%
+        --clr-tint-25: ; // 하이라이트 25%
+        --clr-tint-10: ; // 하이라이트 10%
+        --clr-tint-5: ; // 하이라이트 5%
+
+        --clr-text: 255, 255, 255; // 문자
+        --clr-text-on-tint: 19, 81, 52; // 하이라이트 배경 문자
+        --clr-text-on-surface: 209, 209, 209; // 표면 배경 문자
+        --clr-text-on-invert: ; // 반전 배경 문자
+        --clr-text-disabled: ; // 비활성 문자
+
+        --clr-alert: 227, 23, 10; // 에러
+        --clr-warn: 247, 179, 43; // 경고
+        --clr-info: 169, 229, 187; // 정보
+        --clr-clear: 35, 206, 107; // 안전
+        --clr-unable: ; // 불가능
+
+        --clr-if-100: ; // 인터페이스 표면 100%
+        --clr-if-75: ; // 인터페이스 표면 75%
+        --clr-if-50: ; // 인터페이스 표면 50%
+        --clr-if-25: ; // 인터페이스 표면 25%
+        --clr-if-10: ; // 인터페이스 표면 10%
+        --clr-if-5: ; // 인터페이스 표면 5%
+        --clr-if-disabled: ; // 비활성 인터페이스
+
+        --clr-temp-ebony: #4a5043;
+        --clr-temp-sunglow: #ffcb47;
+        --clr-temp-federalblue: #07004d;
+        --clr-temp-steelblue: #2d82b7;
+        --clr-temp-aquamarine: #42e2b8;
+        --clr-temp-dutchwhite: #f3dfbf;
+        --clr-temp-lightcoral: #eb8a90;
+        --clr-temp-engineeringorange: #ba2d0b;
+        --clr-temp-honeydew: #d5f2e3;
+        --clr-temp-cambridgeblue: #73ba9b;
+        --clr-temp-britishracinggreen: #003e1f;
+        --clr-temp-night: #01110a;
+        --clr-temp-brightpinkcrayola: #ef798a;
+        --clr-temp-melon: #f7a9a8;
+        --clr-temp-finn: #613f75;
+        --clr-temp-fairytale: #e5c3d1;
+        --clr-temp-richblack: #011627;
+        --clr-temp-babypowder: #fdfffc;
+        --clr-temp-lightseagreen: #2ec4b6;
+        --clr-temp-pantonered: #e71d36;
+        --clr-temp-orangepeel: #ff9f1c;
+        --clr-temp-bluecrayola: #0075f2;
+        --clr-temp-oucrimson: #880d1e;
+        --clr-temp-rustyred: #dd2d4a;
+        --clr-temp-antiflashwhite: #efeff0;
+        --clr-temp-navajowhite: #ffe0b5;
+        --clr-temp-rawumber: #8a6552;
+        --clr-temp-caputmortuum: #462521;
+        --clr-temp-mediumslateblue: #6874e8;
+        --clt-temp-aliceblue: #e8f0ff;
+    }
+}
+
+/* _dark.scss */
